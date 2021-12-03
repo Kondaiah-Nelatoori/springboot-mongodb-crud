@@ -34,4 +34,18 @@ public class BookService {
 		return bookRepository.findById(id).orElse(null);
 		
 	}
+	
+	public Book updateBook(Book book) {
+		Book existingBook = bookRepository.findById(book.getId()).orElse(null);
+		existingBook.setId(book.getId());
+		existingBook.setName(book.getName());
+		existingBook.setAuthorName(book.getAuthorName());
+		return bookRepository.save(existingBook);
+		
+	}
+	
+	public String deleteBook(int id) {
+		return "Successfully Deleted record of book with "+id;
+		
+	}
 }
